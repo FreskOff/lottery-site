@@ -7,10 +7,26 @@ body {
   background: linear-gradient(120deg, #0F0F1A, #15152B, #0F0F1A);
   background-size: 600% 600%;
   animation: backgroundShift 20s ease infinite;
-  cursor: none;
 }
 
-/* Анимация плавного перелива фона */
+/* Авторская подпись в углу экрана */
+body::after {
+  content: "Designed by Fresk";
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 0.8em;
+  color: rgba(255,255,255,0.2);
+  font-style: italic;
+  pointer-events: none;
+  z-index: 9999;
+  transition: color 0.3s;
+}
+body:hover::after {
+  color: #00E5FF;
+}
+
+/* Анимация фона */
 @keyframes backgroundShift {
   0% {background-position: 0% 50%;}
   50% {background-position: 100% 50%;}
@@ -19,8 +35,8 @@ body {
 
 header, footer {
   background: #0F0F1A;
-  border-bottom: 1px solid #222;
-  border-top: 1px solid #222;
+  border-bottom: 1px solid rgba(34,34,34,0.5);
+  border-top: 1px solid rgba(34,34,34,0.5);
   padding: 10px 20px;
 }
 
@@ -31,176 +47,23 @@ header {
   position: relative;
   opacity: 0;
   transform: translateY(-20px);
-  animation: fadeDown 1s ease forwards 0.5s; /* Появление шапки с задержкой */
+  animation: fadeDown 1s ease forwards 0.5s;
 }
 
 @keyframes fadeDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Кастомный курсор */
-.custom-cursor {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.8);
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: background 0.2s, transform 0.1s;
-}
-
-/* Состояние при наведении на кликабельные элементы */
-body.clickable .custom-cursor {
-  background: #00E5FF;
-  transform: translate(-50%, -50%) scale(1.5);
-}
-
-.hero {
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  padding: 100px 20px;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 1s ease forwards 1.2s;
-}
-@keyframes fadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Параллакс фон для hero */
-.hero::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, #15152B 10%, #0F0F1A 90%);
-  transform: translate(0,0);
-  transition: transform 0.1s ease-out;
-  z-index: -1;
-}
-
-/* Поэлементная анимация для заголовка hero h1 */
-.hero h1 {
-  font-size: 3em;
-  margin: 0 0 20px;
-  animation: textPop 1s ease forwards 1.4s;
-  opacity: 0;
-  /* Дополнительная перспектива для заголовка */
-  transform: perspective(600px) translateZ(0);
-}
-@keyframes textPop {
-  0% {
-    opacity: 0; 
-    transform: scale(0.8);
-  }
-  100% {
-    opacity: 1; 
-    transform: scale(1);
-  }
-}
-
-/* Литера за литерой: увеличьте число nth-child по количеству букв */
-.hero h1 span {
-  opacity: 0;
-  display: inline-block;
-  transform: translateY(30px);
-  animation: letterFadeUp 0.5s forwards;
-}
-.hero h1 span:nth-child(1) {animation-delay: 1.4s;}
-.hero h1 span:nth-child(2) {animation-delay: 1.45s;}
-.hero h1 span:nth-child(3) {animation-delay: 1.5s;}
-/* Для каждой следующей буквы увеличивайте задержку на 0.05s: 
-   4-я: 1.55s, 5-я: 1.6s и т.д.
-*/
-
-@keyframes letterFadeUp {
-  0% {opacity: 0; transform: translateY(30px);}
-  100% {opacity: 1; transform: translateY(0);}
-}
-
-.hero p {
-  font-size: 1.2em;
-  opacity: 0;
-  animation: fadeIn 1s ease forwards 1.6s;
-  /* Добавим легкий градиентный текст и shimmer */
-  background: linear-gradient(90deg, #FFFFFF 0%, #BB86FC 50%, #FFFFFF 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: fadeIn 1s ease forwards 1.6s, textShimmer 3s ease-in-out infinite;
-}
-@keyframes textShimmer {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-.cta {
-  background: #00E5FF;
-  color: #0F0F1A;
-  border: none;
-  padding: 15px 30px;
-  margin-top: 30px;
-  font-size: 1.1em;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: transform 0.2s, background 0.5s;
-  position: relative;
-}
-.cta::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  opacity: 0.6;
-  background: linear-gradient(45deg, #00E5FF, #00C0E0);
-  mix-blend-mode: overlay;
-  animation: breathe 3s ease-in-out infinite;
-  z-index: -1;
-}
-@keyframes breathe {
-  0%, 100% {opacity: 0.6;}
-  50% {opacity: 0.9;}
-}
-
-.cta:hover {
-  transform: scale(1.1);
-  background: linear-gradient(45deg, #00E5FF, #00C0E0);
+  0% {opacity:0; transform:translateY(-20px);}
+  100% {opacity:1; transform:translateY(0);}
 }
 
 .logo {
-  font-size: 1.5em;
+  font-size: 1.8em;
   color: #00E5FF;
   font-weight: bold;
   cursor: pointer;
   transition: text-shadow 0.3s ease;
 }
 .logo:hover {
-  text-shadow: 0 0 8px #00E5FF;
+  text-shadow: 0 0 15px #00E5FF;
 }
 
 .burger {
@@ -217,10 +80,9 @@ body.clickable .custom-cursor {
 nav ul {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 25px;
   padding: 0;
   margin: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 nav a {
@@ -228,9 +90,12 @@ nav a {
   text-decoration: none;
   position: relative;
   transition: color 0.3s ease;
+  font-size: 1.1em;
+  letter-spacing: 0.5px;
 }
 nav a:hover {
   color: #00E5FF;
+  text-shadow: 0 0 8px #00E5FF;
 }
 nav a::after {
   content: "";
@@ -249,33 +114,136 @@ nav a:hover::after {
 .auth-btn button {
   background: #00E5FF;
   border: none;
-  padding: 8px 12px;
+  padding: 10px 15px;
   border-radius: 4px;
   color: #0F0F1A;
   cursor: pointer;
-  transition: transform 0.2s, background 0.5s;
+  font-size: 1em;
   position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, background 0.5s;
 }
-.auth-btn button::after {
+.auth-btn button::before {
   content: "";
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  opacity: 0.6;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 300%;
   background: linear-gradient(45deg, #00E5FF, #00C0E0);
-  mix-blend-mode: overlay;
-  animation: breathe 3s ease-in-out infinite;
+  transform: translateY(0);
+  transition: transform 0.5s ease-in-out;
   z-index: -1;
 }
 .auth-btn button:hover {
   transform: scale(1.05);
-  background: linear-gradient(45deg, #00E5FF, #00C0E0);
+}
+.auth-btn button:hover::before {
+  transform: translateY(-33%);
 }
 
 main {
   padding: 20px;
 }
 
+.hero {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 100px 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease forwards 1.2s;
+}
+
+@keyframes fadeUp {
+  0% {opacity:0; transform:translateY(30px);}
+  100% {opacity:1; transform:translateY(0);}
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, #15152B 10%, #0F0F1A 90%);
+  transform: translate(0,0);
+  transition: transform 0.1s ease-out;
+  z-index: -1;
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin: 0 0 20px;
+  animation: textPop 1s ease forwards 1.4s;
+  opacity: 0;
+}
+
+@keyframes textPop {
+  0% {opacity:0; transform:scale(0.8);}
+  100% {opacity:1; transform:scale(1);}
+}
+
+/* Градиент для букв заголовка */
+.hero h1 span {
+  color: transparent;
+  background: linear-gradient(90deg, #FFFFFF, #BB86FC, #FFFFFF);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 3s ease-in-out infinite;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: letterFadeUp 0.5s forwards;
+}
+
+@keyframes letterFadeUp {
+  0% {opacity:0; transform:translateY(30px);}
+  100% {opacity:1; transform:translateY(0);}
+}
+
+/* Параграф в hero без прозрачного текста */
+.hero p {
+  color: #FFFFFF;
+  font-size: 1.2em;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 1.6s;
+}
+
+/* Анимация мерцания текста, если нужна */
+@keyframes textShimmer {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+/* Кнопка cta без прозрачного текста */
+.cta {
+  background: #00E5FF;
+  color: #0F0F1A;
+  border: none;
+  padding: 15px 30px;
+  margin-top: 30px;
+  font-size: 1.1em;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, background 0.5s;
+}
+.cta:hover {
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #00E5FF, #00C0E0);
+}
+
+/* Лотерейная сетка и карточки */
 .lottery-grid, .section-content {
   padding: 50px 20px;
   text-align: center;
@@ -288,16 +256,34 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  perspective: 1000px; /* Добавим перспективу для карт */
+  perspective: 1000px;
 }
 
 .card, .list-item {
-  background: #1A1A2E;
-  padding: 20px;
+  background: rgba(26,26,46,0.8);
+  backdrop-filter: blur(10px);
   border-radius: 8px;
+  padding: 20px;
   width: 200px;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   position: relative;
+  overflow: hidden;
+}
+
+.card::before, .list-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%, transparent 100%);
+  background-size: 200% 200%;
+  animation: cardShine 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes cardShine {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
 }
 
 .card:hover, .list-item:hover {
@@ -308,8 +294,10 @@ main {
 .card h3, .list-item h3 {
   color: #BB86FC;
   margin-bottom: 10px;
+  font-size: 1.2em;
 }
 
+/* Кнопки в карточках без прозрачности */
 .card button, .list-item button {
   background: #00E5FF;
   color: #0F0F1A;
@@ -317,9 +305,12 @@ main {
   padding: 8px 12px;
   border-radius: 4px;
   cursor: pointer;
-  transition: background 0.5s;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.5s, transform 0.2s;
 }
 .card button:hover, .list-item button:hover {
+  transform: scale(1.05);
   background: linear-gradient(45deg, #00E5FF, #00C0E0);
 }
 
@@ -340,10 +331,18 @@ footer {
   animation: fadeUp 1s ease forwards 2.2s;
 }
 
+/* Дополнительные секции (профиль, баланс и т.д.) */
 .profile-section, .balance-section, .settings-section, .winners-section, .faq-section, .support-section {
   max-width: 600px;
   margin: 0 auto;
   text-align: left;
+  background: rgba(26,26,46,0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 30px;
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards 2s;
+  box-shadow: 0 0 30px rgba(0,0,0,0.3);
 }
 
 .profile-header {
@@ -351,7 +350,7 @@ footer {
   align-items: center;
   gap: 20px;
   opacity: 0;
-  animation: fadeIn 1s ease forwards 1.2s;
+  animation: fadeIn 1s ease forwards 2.5s;
 }
 
 .profile-avatar {
@@ -362,21 +361,24 @@ footer {
   transition: box-shadow 0.3s, transform 0.3s;
 }
 .profile-avatar:hover {
-  box-shadow: 0 0 10px #BB86FC;
-  transform: scale(1.05);
+  box-shadow: 0 0 15px #BB86FC;
+  transform: scale(1.1);
 }
 
 .profile-info p {
   margin: 5px 0;
+  line-height: 1.5em;
 }
 
 .balance-box, .settings-box {
-  background: #1A1A2E;
+  background: rgba(26,26,46,0.7);
+  backdrop-filter: blur(10px);
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 20px;
   opacity: 0;
-  animation: fadeIn 1s ease forwards 2.5s;
+  animation: fadeIn 1s ease forwards 2.8s;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
 
 input[type="text"], input[type="number"], textarea {
@@ -391,11 +393,14 @@ input[type="text"], input[type="number"], textarea {
 }
 input[type="text"]:focus, input[type="number"]:focus, textarea:focus {
   border-color: #00E5FF;
+  box-shadow: 0 0 8px #00E5FF;
 }
 
 label {
   display: block;
   margin: 10px 0 5px;
+  color: #BB86FC;
+  font-weight: 500;
 }
 
 button.primary {
@@ -406,19 +411,9 @@ button.primary {
   cursor: pointer;
   border-radius: 4px;
   margin-top: 10px;
-  transition: transform 0.2s, background 0.5s;
   position: relative;
-}
-button.primary::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  opacity: 0.6;
-  background: linear-gradient(45deg, #00E5FF, #00C0E0);
-  mix-blend-mode: overlay;
-  animation: breathe 3s ease-in-out infinite;
-  z-index: -1;
+  overflow: hidden;
+  transition: transform 0.2s, background 0.5s;
 }
 button.primary:hover {
   transform: scale(1.05);
@@ -441,10 +436,28 @@ img {
   height: auto;
 }
 
+/* Класс для градиентного текста по желанию */
+.gradient-text {
+  color: transparent;
+  background: linear-gradient(90deg, #FFFFFF, #BB86FC, #FFFFFF);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 3s ease-in-out infinite;
+}
+
+/* Если иконки внутри hero h1 или p, переопределяем для них цвет */
+.hero h1 .icon, .hero p .icon {
+  color: #FFFFFF !important;
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
 /* Мобильная адаптация */
 @media (max-width: 600px) {
   .logo {
-    font-size: 1.2em;
+    font-size: 1.4em;
   }
 
   .burger {
@@ -454,12 +467,12 @@ img {
   nav ul {
     display: none;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     background: #0F0F1A;
     position: absolute;
     top: 60px;
     right: 20px;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #222;
     border-radius: 8px;
     opacity: 0;
