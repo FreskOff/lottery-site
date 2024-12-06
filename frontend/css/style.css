@@ -3,6 +3,18 @@ body {
   font-family: "Inter", sans-serif;
   background: #0F0F1A;
   color: #FFFFFF;
+  /* Легкая анимация фона - едва заметный градиент */
+  background: linear-gradient(120deg, #0F0F1A, #15152B, #0F0F1A);
+  background-size: 600% 600%;
+  animation: backgroundShift 20s ease infinite;
+  cursor: none;
+}
+
+/* Анимация плавного перелива фона */
+@keyframes backgroundShift {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 
 header, footer {
@@ -17,70 +29,134 @@ header {
   justify-content: space-between;
   align-items: center;
   position: relative;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeDown 1s ease forwards 0.5s; /* Появление шапки с задержкой */
 }
 
-.logo {
-  font-size: 1.5em;
-  color: #00E5FF;
-  font-weight: bold;
-  cursor: pointer;
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.burger {
-  display: none;
-  font-size: 2em;
-  color: #FFFFFF;
-  cursor: pointer;
+/* Кастомный курсор */
+.custom-cursor {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.8);
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: background 0.2s, transform 0.1s;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  padding: 0;
-  margin: 0;
-}
-
-nav a {
-  color: #FFFFFF;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-nav a:hover {
-  color: #00E5FF;
-}
-
-.auth-btn button {
+/* Состояние при наведении на кликабельные элементы */
+body.clickable .custom-cursor {
   background: #00E5FF;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  color: #0F0F1A;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.auth-btn button:hover {
-  transform: scale(1.05);
-}
-
-main {
-  padding: 20px;
+  transform: translate(-50%, -50%) scale(1.5);
 }
 
 .hero {
+  position: relative;
+  overflow: hidden;
   text-align: center;
   padding: 100px 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease forwards 1.2s;
+}
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+/* Параллакс фон для hero */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, #15152B 10%, #0F0F1A 90%);
+  transform: translate(0,0);
+  transition: transform 0.1s ease-out;
+  z-index: -1;
+}
+
+/* Поэлементная анимация для заголовка hero h1 */
 .hero h1 {
   font-size: 3em;
   margin: 0 0 20px;
+  animation: textPop 1s ease forwards 1.4s;
+  opacity: 0;
+  /* Дополнительная перспектива для заголовка */
+  transform: perspective(600px) translateZ(0);
+}
+@keyframes textPop {
+  0% {
+    opacity: 0; 
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1; 
+    transform: scale(1);
+  }
+}
+
+/* Литера за литерой: увеличьте число nth-child по количеству букв */
+.hero h1 span {
+  opacity: 0;
+  display: inline-block;
+  transform: translateY(30px);
+  animation: letterFadeUp 0.5s forwards;
+}
+.hero h1 span:nth-child(1) {animation-delay: 1.4s;}
+.hero h1 span:nth-child(2) {animation-delay: 1.45s;}
+.hero h1 span:nth-child(3) {animation-delay: 1.5s;}
+/* Для каждой следующей буквы увеличивайте задержку на 0.05s: 
+   4-я: 1.55s, 5-я: 1.6s и т.д.
+*/
+
+@keyframes letterFadeUp {
+  0% {opacity: 0; transform: translateY(30px);}
+  100% {opacity: 1; transform: translateY(0);}
 }
 
 .hero p {
   font-size: 1.2em;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 1.6s;
+  /* Добавим легкий градиентный текст и shimmer */
+  background: linear-gradient(90deg, #FFFFFF 0%, #BB86FC 50%, #FFFFFF 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: fadeIn 1s ease forwards 1.6s, textShimmer 3s ease-in-out infinite;
+}
+@keyframes textShimmer {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 
 .cta {
@@ -92,16 +168,119 @@ main {
   font-size: 1.1em;
   border-radius: 4px;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s, background 0.5s;
+  position: relative;
+}
+.cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0.6;
+  background: linear-gradient(45deg, #00E5FF, #00C0E0);
+  mix-blend-mode: overlay;
+  animation: breathe 3s ease-in-out infinite;
+  z-index: -1;
+}
+@keyframes breathe {
+  0%, 100% {opacity: 0.6;}
+  50% {opacity: 0.9;}
 }
 
 .cta:hover {
+  transform: scale(1.1);
+  background: linear-gradient(45deg, #00E5FF, #00C0E0);
+}
+
+.logo {
+  font-size: 1.5em;
+  color: #00E5FF;
+  font-weight: bold;
+  cursor: pointer;
+  transition: text-shadow 0.3s ease;
+}
+.logo:hover {
+  text-shadow: 0 0 8px #00E5FF;
+}
+
+.burger {
+  display: none;
+  font-size: 2em;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.burger:hover {
+  transform: rotate(90deg);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+nav a {
+  color: #FFFFFF;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: #00E5FF;
+}
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #00E5FF;
+  bottom: -4px;
+  left: 0;
+  transition: width 0.3s ease;
+}
+nav a:hover::after {
+  width: 100%;
+}
+
+.auth-btn button {
+  background: #00E5FF;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: #0F0F1A;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.5s;
+  position: relative;
+}
+.auth-btn button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0.6;
+  background: linear-gradient(45deg, #00E5FF, #00C0E0);
+  mix-blend-mode: overlay;
+  animation: breathe 3s ease-in-out infinite;
+  z-index: -1;
+}
+.auth-btn button:hover {
   transform: scale(1.05);
+  background: linear-gradient(45deg, #00E5FF, #00C0E0);
+}
+
+main {
+  padding: 20px;
 }
 
 .lottery-grid, .section-content {
   padding: 50px 20px;
   text-align: center;
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards 2s;
 }
 
 .cards, .list {
@@ -109,6 +288,7 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  perspective: 1000px; /* Добавим перспективу для карт */
 }
 
 .card, .list-item {
@@ -116,11 +296,13 @@ main {
   padding: 20px;
   border-radius: 8px;
   width: 200px;
-  transition: transform 0.2s;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
 }
 
 .card:hover, .list-item:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) rotate3d(1,1,0,10deg);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
 
 .card h3, .list-item h3 {
@@ -135,17 +317,27 @@ main {
   padding: 8px 12px;
   border-radius: 4px;
   cursor: pointer;
+  transition: background 0.5s;
+}
+.card button:hover, .list-item button:hover {
+  background: linear-gradient(45deg, #00E5FF, #00C0E0);
 }
 
 footer {
   text-align: center;
   padding: 20px;
   font-size: 0.9em;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards 2.5s;
 }
 
 .section-title {
   font-size: 2em;
   margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards 2.2s;
 }
 
 .profile-section, .balance-section, .settings-section, .winners-section, .faq-section, .support-section {
@@ -158,6 +350,8 @@ footer {
   display: flex;
   align-items: center;
   gap: 20px;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 1.2s;
 }
 
 .profile-avatar {
@@ -165,6 +359,11 @@ footer {
   height: 80px;
   background: #BB86FC;
   border-radius: 50%;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.profile-avatar:hover {
+  box-shadow: 0 0 10px #BB86FC;
+  transform: scale(1.05);
 }
 
 .profile-info p {
@@ -176,6 +375,8 @@ footer {
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 2.5s;
 }
 
 input[type="text"], input[type="number"], textarea {
@@ -186,6 +387,10 @@ input[type="text"], input[type="number"], textarea {
   color: #FFFFFF;
   border-radius: 4px;
   margin-bottom: 10px;
+  transition: border-color 0.3s;
+}
+input[type="text"]:focus, input[type="number"]:focus, textarea:focus {
+  border-color: #00E5FF;
 }
 
 label {
@@ -201,10 +406,23 @@ button.primary {
   cursor: pointer;
   border-radius: 4px;
   margin-top: 10px;
+  transition: transform 0.2s, background 0.5s;
+  position: relative;
 }
-
+button.primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0.6;
+  background: linear-gradient(45deg, #00E5FF, #00C0E0);
+  mix-blend-mode: overlay;
+  animation: breathe 3s ease-in-out infinite;
+  z-index: -1;
+}
 button.primary:hover {
-  transform: scale(1.02);
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #00E5FF, #00C0E0);
 }
 
 .links {
@@ -233,7 +451,6 @@ img {
     display: block;
   }
 
-  /* Прячем десктопное меню на мобильных */
   nav ul {
     display: none;
     flex-direction: column;
@@ -245,10 +462,15 @@ img {
     padding: 10px;
     border: 1px solid #222;
     border-radius: 8px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
   }
 
   nav ul.show {
     display: flex;
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .hero {
