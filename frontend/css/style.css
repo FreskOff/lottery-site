@@ -1,206 +1,306 @@
 body {
-    margin: 0;
-    font-family: "Inter", sans-serif;
-    background: #0F0F1A;
-    color: #FFFFFF;
-  }
-  
-  header, footer {
-    background: #0F0F1A;
-    border-bottom: 1px solid #222;
-    border-top: 1px solid #222;
-    padding: 10px 20px;
-  }
-  
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #0F0F1A;
+  color: #FFFFFF;
+}
+
+header, footer {
+  background: #0F0F1A;
+  border-bottom: 1px solid #222;
+  border-top: 1px solid #222;
+  padding: 10px 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.logo {
+  font-size: 1.5em;
+  color: #00E5FF;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.burger {
+  display: none;
+  font-size: 2em;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: #00E5FF;
+}
+
+.auth-btn button {
+  background: #00E5FF;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: #0F0F1A;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.auth-btn button:hover {
+  transform: scale(1.05);
+}
+
+main {
+  padding: 20px;
+}
+
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin: 0 0 20px;
+}
+
+.hero p {
+  font-size: 1.2em;
+}
+
+.cta {
+  background: #00E5FF;
+  color: #0F0F1A;
+  border: none;
+  padding: 15px 30px;
+  margin-top: 30px;
+  font-size: 1.1em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.cta:hover {
+  transform: scale(1.05);
+}
+
+.lottery-grid, .section-content {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.cards, .list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card, .list-item {
+  background: #1A1A2E;
+  padding: 20px;
+  border-radius: 8px;
+  width: 200px;
+  transition: transform 0.2s;
+}
+
+.card:hover, .list-item:hover {
+  transform: translateY(-5px);
+}
+
+.card h3, .list-item h3 {
+  color: #BB86FC;
+  margin-bottom: 10px;
+}
+
+.card button, .list-item button {
+  background: #00E5FF;
+  color: #0F0F1A;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+}
+
+.section-title {
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+
+.profile-section, .balance-section, .settings-section, .winners-section, .faq-section, .support-section {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  background: #BB86FC;
+  border-radius: 50%;
+}
+
+.profile-info p {
+  margin: 5px 0;
+}
+
+.balance-box, .settings-box {
+  background: #1A1A2E;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+input[type="text"], input[type="number"], textarea {
+  width: 100%;
+  padding: 10px;
+  background: #0F0F1A;
+  border: 1px solid #333;
+  color: #FFFFFF;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+button.primary {
+  background: #00E5FF;
+  color: #0F0F1A;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+button.primary:hover {
+  transform: scale(1.02);
+}
+
+.links {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 600px) {
   .logo {
-    font-size: 1.5em;
-    color: #00E5FF;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    padding: 0;
-    margin: 0;
-  }
-  
-  nav a {
-    color: #FFFFFF;
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-  
-  nav a:hover {
-    color: #00E5FF;
-  }
-  
-  .auth-btn button {
-    background: #00E5FF;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    color: #0F0F1A;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-  
-  .auth-btn button:hover {
-    transform: scale(1.05);
-  }
-  
-  main {
-    padding: 20px;
-  }
-  
-  .hero {
-    text-align: center;
-    padding: 100px 20px;
-  }
-  
-  .hero h1 {
-    font-size: 3em;
-    margin: 0 0 20px;
-  }
-  
-  .hero p {
     font-size: 1.2em;
   }
-  
-  .cta {
-    background: #00E5FF;
-    color: #0F0F1A;
-    border: none;
-    padding: 15px 30px;
-    margin-top: 30px;
-    font-size: 1.1em;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: transform 0.2s;
+
+  .burger {
+    display: block;
   }
-  
-  .cta:hover {
-    transform: scale(1.05);
-  }
-  
-  .lottery-grid, .section-content {
-    padding: 50px 20px;
-    text-align: center;
-  }
-  
-  .cards, .list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .card, .list-item {
-    background: #1A1A2E;
-    padding: 20px;
+
+  /* Прячем десктопное меню на мобильных */
+  nav ul {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background: #0F0F1A;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 10px;
+    border: 1px solid #222;
     border-radius: 8px;
-    width: 200px;
-    transition: transform 0.2s;
   }
-  
-  .card:hover, .list-item:hover {
-    transform: translateY(-5px);
+
+  nav ul.show {
+    display: flex;
   }
-  
-  .card h3, .list-item h3 {
-    color: #BB86FC;
-    margin-bottom: 10px;
+
+  .hero {
+    padding: 50px 20px;
   }
-  
-  .card button, .list-item button {
-    background: #00E5FF;
-    color: #0F0F1A;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
+
+  .hero h1 {
+    font-size: 2em;
   }
-  
-  footer {
-    text-align: center;
-    padding: 20px;
+
+  .hero p {
+    font-size: 1em;
+  }
+
+  .cta {
+    padding: 12px 24px;
+    font-size: 1em;
+  }
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  .section-title {
+    font-size: 1.5em;
+  }
+
+  .profile-info p,
+  .balance-box,
+  .settings-box,
+  .list-item {
     font-size: 0.9em;
   }
-  
-  .section-title {
-    font-size: 2em;
-    margin-bottom: 30px;
-  }
-  
-  .profile-section, .balance-section, .settings-section, .winners-section, .faq-section, .support-section {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: left;
-  }
-  
-  .profile-header {
+
+  footer .links {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 20px;
-  }
-  
-  .profile-avatar {
-    width: 80px;
-    height: 80px;
-    background: #BB86FC;
-    border-radius: 50%;
-  }
-  
-  .profile-info p {
-    margin: 5px 0;
-  }
-  
-  .balance-box, .settings-box {
-    background: #1A1A2E;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-  }
-  
-  input[type="text"], input[type="number"], textarea {
-    width: 100%;
-    padding: 10px;
-    background: #0F0F1A;
-    border: 1px solid #333;
-    color: #FFFFFF;
-    border-radius: 4px;
-    margin-bottom: 10px;
-  }
-  
-  label {
-    display: block;
-    margin: 10px 0 5px;
-  }
-  
-  button.primary {
-    background: #00E5FF;
-    color: #0F0F1A;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 4px;
     margin-top: 10px;
   }
-  
-  button.primary:hover {
-    transform: scale(1.02);
+
+  footer .links a {
+    margin: 5px 0;
   }
-  
-  .links {
-    text-align: center;
-    margin-top: 20px;
+
+  .auth-btn button, .card button {
+    padding: 12px 16px;
+    font-size: 1em;
   }
-  
+}
