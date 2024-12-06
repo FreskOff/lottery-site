@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Главная - LotterySite</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<header>
+  <div class="logo" onclick="window.location='index.html';">LotterySite</div>
+  <nav>
+    <ul>
+      <li><a href="lotteries.html">Лотереи</a></li>
+      <li><a href="profile.html">Профиль</a></li>
+      <li><a href="balance.html">Баланс</a></li>
+      <li><a href="settings.html">Настройки</a></li>
+      <li><a href="winners.html">Победители</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="#">Поддержка</a></li>
+    </ul>
+  </nav>
+  <div class="auth-btn">
+    <button id="loginBtn">Войти через Telegram</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Участвуй в лотереях и выигрывай!</h1>
+    <p>Купи билет за $1 и получи шанс стать миллионером!</p>
+    <button class="cta" onclick="window.location='lotteries.html';">Играть сейчас</button>
+  </section>
+
+  <section class="lottery-grid">
+    <h2 class="section-title">Доступные лотереи</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Ежечасная лотерея</h3>
+        <p>Джекпот: $1,234,567</p>
+        <p>До розыгрыша: 00:45:10</p>
+        <button>Купить билет</button>
+      </div>
+      <!-- Другие карточки лотерей -->
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2024 LotterySite</p>
+  <div class="links">
+    <a href="winners.html">Победители</a> |
+    <a href="#">FAQ</a> |
+    <a href="#">Поддержка</a>
+  </div>
+</footer>
+<script src="./js/main.js"></script>
+</body>
+</html>
+    

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Поддержка - LotterySite</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <div class="logo" onclick="window.location='index.html';">LotterySite</div>
+  <nav>
+    <ul>
+      <li><a href="lotteries.html">Лотереи</a></li>
+      <li><a href="profile.html">Профиль</a></li>
+      <li><a href="balance.html">Баланс</a></li>
+      <li><a href="settings.html">Настройки</a></li>
+      <li><a href="winners.html">Победители</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="support.html" class="active">Поддержка</a></li>
+    </ul>
+  </nav>
+  <div class="auth-btn">
+    <button>Мой Аккаунт</button>
+  </div>
+</header>
+
+<main>
+  <section class="support-section">
+    <h2 class="section-title">Поддержка</h2>
+    <p>Если у вас возникли вопросы или проблемы, заполните форму ниже или свяжитесь с нами в Telegram.</p>
+    <form>
+      <label for="subject">Тема:</label>
+      <input type="text" id="subject" placeholder="Кратко опишите проблему">
+
+      <label for="message">Сообщение:</label>
+      <textarea id="message" rows="5" placeholder="Опишите вашу проблему более подробно"></textarea>
+
+      <button class="primary" type="submit">Отправить</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p>© 2024 LotterySite</p>
+  <div class="links">
+    <a href="winners.html">Победители</a> |
+    <a href="faq.html">FAQ</a> |
+    <a href="support.html">Поддержка</a>
+  </div>
+</footer>
+</body>
+</html>

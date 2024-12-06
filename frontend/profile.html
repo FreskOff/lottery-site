@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Профиль - LotterySite</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<header>
+  <div class="logo" onclick="window.location='index.html';">LotterySite</div>
+  <nav>
+    <ul>
+      <li><a href="lotteries.html">Лотереи</a></li>
+      <li><a href="profile.html" class="active">Профиль</a></li>
+      <li><a href="balance.html">Баланс</a></li>
+      <li><a href="settings.html">Настройки</a></li>
+      <li><a href="winners.html">Победители</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="#">Поддержка</a></li>
+    </ul>
+  </nav>
+  <div class="auth-btn">
+    <button>Мой Аккаунт</button>
+  </div>
+</header>
+
+<main>
+  <section class="profile-section">
+    <h2 class="section-title">Мой Профиль</h2>
+    <div class="profile-header">
+      <div class="profile-avatar"></div>
+      <div class="profile-info">
+        <p>Имя пользователя: <strong>username</strong></p>
+        <p>Telegram: <strong>@user_telegram</strong></p>
+        <p>Описание: Люблю выигрывать!</p>
+      </div>
+    </div>
+    <!-- Остальное содержимое профиля -->
+  </section>
+</main>
+
+<footer>
+  <p>© 2024 LotterySite</p>
+  <div class="links">
+    <a href="winners.html">Победители</a> |
+    <a href="#">FAQ</a> |
+    <a href="#">Поддержка</a>
+  </div>
+</footer>
+<script src="./js/main.js"></script>
+</body>
+</html>

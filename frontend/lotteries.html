@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Лотереи - LotterySite</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <div class="logo" onclick="window.location='index.html';">LotterySite</div>
+  <nav>
+    <ul>
+      <li><a href="lotteries.html" class="active">Лотереи</a></li>
+      <li><a href="profile.html">Профиль</a></li>
+      <li><a href="balance.html">Баланс</a></li>
+      <li><a href="settings.html">Настройки</a></li>
+      <li><a href="winners.html">Победители</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="support.html">Поддержка</a></li>
+    </ul>
+  </nav>
+  <div class="auth-btn">
+    <button>Мой Аккаунт</button>
+  </div>
+</header>
+
+<main>
+  <section class="lottery-grid">
+    <h2 class="section-title">Все лотереи</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Ежечасная лотерея</h3>
+        <p>Джекпот: $1,234,567</p>
+        <p>До розыгрыша: 00:45:10</p>
+        <button>Купить билет</button>
+      </div>
+      <div class="card">
+        <h3>Ежедневная лотерея</h3>
+        <p>Джекпот: $500,000</p>
+        <p>До розыгрыша: 12:00:00</p>
+        <button>Купить билет</button>
+      </div>
+      <!-- Повторить для всех 10 лотерей -->
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2024 LotterySite</p>
+  <div class="links">
+    <a href="winners.html">Победители</a> |
+    <a href="faq.html">FAQ</a> |
+    <a href="support.html">Поддержка</a>
+  </div>
+</footer>
+</body>
+</html>
