@@ -87,3 +87,4 @@ document.addEventListener('buyLottoTicket', async (e) => {
     hideLoader();
   }
 });
+

@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Настройки - LotterySite</title>
+  <title>Настройки - LottoVerse</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header>
-  <div class="logo" onclick="window.location='index.html';">LotterySite</div>
-  <nav>
-    <ul>
+<header class="header">
+  <div class="logo" onclick="window.location='index.html';">LottoVerse</div>
+  <nav class="nav">
+    <button class="nav-toggle" aria-label="Открыть меню">
+      <span class="nav-toggle__line"></span>
+      <span class="nav-toggle__line"></span>
+      <span class="nav-toggle__line"></span>
+    </button>
+    <ul class="nav-list">
       <li><a href="lotteries.html">Лотереи</a></li>
       <li><a href="profile.html">Профиль</a></li>
       <li><a href="balance.html">Баланс</a></li>
@@ -26,7 +31,7 @@
 </header>
 
 <main>
-  <section class="settings-section">
+  <section class="container settings-section">
     <h2 class="section-title">Настройки</h2>
     <div class="settings-box">
       <h3>Приватность</h3>
@@ -45,16 +50,16 @@
       <label for="phone">Номер телефона (Telegram):</label>
       <input type="text" id="phone" value="+1234567890">
       <label><input type="checkbox"> Включить 2FA</label>
-      <button class="primary">Сохранить изменения</button>
+      <button class="btn btn--primary">Сохранить изменения</button>
     </div>
   </section>
 </main>
 
-<footer>
-  <p>© 2024 LotterySite</p>
-  <div class="links">
-    <a href="winners.html">Победители</a> |
-    <a href="faq.html">FAQ</a> |
+<footer class="footer">
+  <p class="footer__copy">© 2024 LottoVerse</p>
+  <div class="footer__links">
+    <a href="winners.html">Победители</a> | 
+    <a href="faq.html">FAQ</a> | 
     <a href="support.html">Поддержка</a>
   </div>
 </footer>

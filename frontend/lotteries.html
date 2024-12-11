@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Лотереи - LotterySite</title>
+  <title>Лотереи - LottoVerse</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header>
-  <div class="logo" onclick="window.location='index.html';">LotterySite</div>
-  <nav>
-    <ul>
+<header class="header">
+  <div class="logo" onclick="window.location='index.html';">LottoVerse</div>
+  <nav class="nav">
+    <button class="nav-toggle" aria-label="Открыть меню">
+      <span class="nav-toggle__line"></span>
+      <span class="nav-toggle__line"></span>
+      <span class="nav-toggle__line"></span>
+    </button>
+    <ul class="nav-list">
       <li><a href="lotteries.html" class="active">Лотереи</a></li>
       <li><a href="profile.html">Профиль</a></li>
       <li><a href="balance.html">Баланс</a></li>
@@ -26,29 +31,29 @@
 </header>
 
 <main>
-  <section class="lottery-grid">
+  <section class="container">
     <h2 class="section-title">Все лотереи</h2>
     <div class="cards">
       <div class="card">
-        <h3>Ежечасная лотерея</h3>
-        <p>Джекпот: $1,234,567</p>
-        <p>До розыгрыша: 00:45:10</p>
-        <button>Купить билет</button>
+        <h3 class="card__title">Ежечасная лотерея</h3>
+        <p class="card__text">Джекпот: $1,234,567</p>
+        <p class="card__text">До розыгрыша: 00:45:10</p>
+        <button class="btn btn--primary">Купить билет</button>
       </div>
       <div class="card">
-        <h3>Ежедневная лотерея</h3>
-        <p>Джекпот: $500,000</p>
-        <p>До розыгрыша: 12:00:00</p>
-        <button>Купить билет</button>
+        <h3 class="card__title">Ежедневная лотерея</h3>
+        <p class="card__text">Джекпот: $500,000</p>
+        <p class="card__text">До розыгрыша: 12:00:00</p>
+        <button class="btn btn--primary">Купить билет</button>
       </div>
-      <!-- Повторить для всех 10 лотерей -->
+      <!-- Повторите карточки для всех лотерей -->
     </div>
   </section>
 </main>
 
-<footer>
-  <p>© 2024 LotterySite</p>
-  <div class="links">
+<footer class="footer">
+  <p class="footer__copy">© 2024 LottoVerse</p>
+  <div class="footer__links">
     <a href="winners.html">Победители</a> |
     <a href="faq.html">FAQ</a> |
     <a href="support.html">Поддержка</a>

@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Поддержка - LotterySite</title>
+  <title>Поддержка - LottoVerse</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header>
-  <div class="logo" onclick="window.location='index.html';">LotterySite</div>
-  <nav>
-    <ul>
+<header class="header">
+  <div class="logo" onclick="window.location='index.html';">LottoVerse</div>
+  <nav class="nav">
+    <button class="nav-toggle" aria-label="Открыть меню">
+      <span class="nav-toggle__line"></span>
+      <span class="nav-toggle__line"></span>
+      <span class="nav-toggle__line"></span>
+    </button>
+    <ul class="nav-list">
       <li><a href="lotteries.html">Лотереи</a></li>
       <li><a href="profile.html">Профиль</a></li>
       <li><a href="balance.html">Баланс</a></li>
@@ -26,7 +31,7 @@
 </header>
 
 <main>
-  <section class="support-section">
+  <section class="container support-section">
     <h2 class="section-title">Поддержка</h2>
     <p>Если у вас возникли вопросы или проблемы, заполните форму ниже или свяжитесь с нами в Telegram.</p>
     <form>
@@ -34,18 +39,18 @@
       <input type="text" id="subject" placeholder="Кратко опишите проблему">
 
       <label for="message">Сообщение:</label>
-      <textarea id="message" rows="5" placeholder="Опишите вашу проблему более подробно"></textarea>
+      <textarea id="message" rows="5" placeholder="Опишите вашу проблему подробнее"></textarea>
 
-      <button class="primary" type="submit">Отправить</button>
+      <button class="btn btn--primary" type="submit">Отправить</button>
     </form>
   </section>
 </main>
 
-<footer>
-  <p>© 2024 LotterySite</p>
-  <div class="links">
-    <a href="winners.html">Победители</a> |
-    <a href="faq.html">FAQ</a> |
+<footer class="footer">
+  <p class="footer__copy">© 2024 LottoVerse</p>
+  <div class="footer__links">
+    <a href="winners.html">Победители</a> | 
+    <a href="faq.html">FAQ</a> | 
     <a href="support.html">Поддержка</a>
   </div>
 </footer>

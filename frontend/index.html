@@ -3,59 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Главная - LotterySite</title>
+  <title>Главная - LottoVerse</title>
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-<header>
-  <div class="logo" onclick="window.location='index.html';">LotterySite</div>
-  <nav>
-    <ul>
+<header class="header">
+  <div class="logo" onclick="window.location='index.html';">LottoVerse</div>
+  <nav class="nav">
+    <button class="nav-toggle" aria-label="Открыть меню">
+      <span class="nav-toggle__line"></span>
+      <span class="nav-toggle__line"></span>
+      <span class="nav-toggle__line"></span>
+    </button>
+    <ul class="nav-list">
       <li><a href="lotteries.html">Лотереи</a></li>
       <li><a href="profile.html">Профиль</a></li>
       <li><a href="balance.html">Баланс</a></li>
       <li><a href="settings.html">Настройки</a></li>
       <li><a href="winners.html">Победители</a></li>
-      <li><a href="#">FAQ</a></li>
-      <li><a href="#">Поддержка</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="support.html">Поддержка</a></li>
     </ul>
   </nav>
   <div class="auth-btn">
-    <button id="loginBtn">Войти через Telegram</button>
+    <button>Войти через Google</button>
   </div>
 </header>
 
 <main>
   <section class="hero">
-    <h1>
-      <span>У</span><span>ч</span><span>а</span><span>с</span><span>т</span><span>в</span><span>у</span><span>й</span>
-      <span>в</span> <span>л</span><span>о</span><span>т</span><span>е</span><span>р</span><span>е</span><span>я</span><span>х</span>
-      <span>и</span> <span>в</span><span>ы</span><span>и</span><span>г</span><span>р</span><span>ы</span><span>в</span><span>а</span><span>й</span><span>!</span>
-    </h1>
-    <p>Купи билет за $1 и получи шанс стать миллионером!</p>
-    <button class="cta" onclick="window.location='lotteries.html';">Играть сейчас</button>
+    <div class="hero__content">
+      <h1 class="hero__title">
+        <span class="hero__line">ЛОТЕРЕИ —</span>
+        <span class="hero__line hero__line--accent">ВСЕЛЕННАЯ ВОЗМОЖНОСТЕЙ</span>
+        <span class="hero__line">ГДЕ КАЖДЫЙ БИЛЕТ — ШАНС</span>
+      </h1>
+      <p class="hero__subtitle">
+        Испытай удачу в мире ежедневных, недельных, месячных розыгрышей. Пополняй баланс, покупай билеты и выигрывай.
+      </p>
+      <button class="btn btn--secondary hero__cta" onclick="window.location='lotteries.html';">
+        Играть сейчас
+      </button>
+    </div>
+    <div class="hero__decor">
+      <div class="ticket-shape ticket-shape--small"></div>
+      <div class="ticket-shape ticket-shape--medium"></div>
+      <div class="ticket-shape ticket-shape--large"></div>
+    </div>
   </section>
 
-  <section class="lottery-grid">
-    <h2 class="section-title">Доступные лотереи</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Ежечасная лотерея</h3>
-        <p>Джекпот: $1,234,567</p>
-        <p>До розыгрыша: 00:45:10</p>
-        <button>Купить билет</button>
+  <section class="about">
+    <div class="container">
+      <h2 class="section-title">О LottoVerse</h2>
+      <p class="section-text">
+        LottoVerse — это платформа для участия в разных видах лотерей. От ежечасных тиражей до крупных ежемесячных джекпотов.
+        Авторизуйся через Google, пополняй баланс удобным способом и испытывай удачу.
+      </p>
+    </div>
+  </section>
+
+  <section class="lottery-showcase">
+    <div class="container">
+      <h2 class="section-title">Популярные лотереи</h2>
+      <p class="section-text">
+        Выбери лотерею по душе. Играй сколько хочешь, когда хочешь.
+      </p>
+      <div class="cards">
+        <div class="card">
+          <h3 class="card__title">Ежечасная Лотерея</h3>
+          <p class="card__text">Джекпот: $1,234,567</p>
+          <p class="card__text">До розыгрыша: 00:45:10</p>
+          <button class="btn btn--primary" onclick="window.location='lotteries.html';">Купить билет</button>
+        </div>
+        <div class="card">
+          <h3 class="card__title">Ежедневная Лотерея</h3>
+          <p class="card__text">Джекпот: $500,000</p>
+          <p class="card__text">До розыгрыша: 12:00:00</p>
+          <button class="btn btn--primary" onclick="window.location='lotteries.html';">Купить билет</button>
+        </div>
+        <div class="card">
+          <h3 class="card__title">Еженедельная Лотерея</h3>
+          <p class="card__text">Джекпот: $2,000,000</p>
+          <p class="card__text">До розыгрыша: 5дн:10ч:00м</p>
+          <button class="btn btn--primary" onclick="window.location='lotteries.html';">Купить билет</button>
+        </div>
       </div>
-      <!-- Другие карточки лотерей -->
     </div>
   </section>
 </main>
 
-<footer>
-  <p>© 2024 LotterySite</p>
-  <div class="links">
+<footer class="footer">
+  <p class="footer__copy">© 2024 LottoVerse</p>
+  <div class="footer__links">
     <a href="winners.html">Победители</a> |
-    <a href="#">FAQ</a> |
-    <a href="#">Поддержка</a>
+    <a href="faq.html">FAQ</a> |
+    <a href="support.html">Поддержка</a>
   </div>
 </footer>
 <script src="./js/main.js"></script>

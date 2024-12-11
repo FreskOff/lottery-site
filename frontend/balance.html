@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Баланс - LotterySite</title>
+  <title>Баланс - LottoVerse</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header>
-  <div class="logo" onclick="window.location='index.html';">LotterySite</div>
-  <nav>
-    <ul>
+<header class="header">
+  <div class="logo" onclick="window.location='index.html';">LottoVerse</div>
+  <nav class="nav">
+    <button class="nav-toggle" aria-label="Открыть меню">
+      <span class="nav-toggle__line"></span>
+      <span class="nav-toggle__line"></span>
+      <span class="nav-toggle__line"></span>
+    </button>
+    <ul class="nav-list">
       <li><a href="lotteries.html">Лотереи</a></li>
       <li><a href="profile.html">Профиль</a></li>
       <li><a href="balance.html" class="active">Баланс</a></li>
@@ -26,31 +31,31 @@
 </header>
 
 <main>
-  <section class="balance-section">
+  <section class="container balance-section">
     <h2 class="section-title">Мой Баланс</h2>
     <div class="balance-box">
       <h3>Текущий баланс: $1000</h3>
-      <button class="primary">Пополнить</button>
-      <button class="primary">Вывести</button>
+      <button class="btn btn--primary">Пополнить</button>
+      <button class="btn btn--primary">Вывести</button>
     </div>
 
-    <h3>История транзакций</h3>
+    <h3 style="margin-top: 2rem;">История транзакций</h3>
     <div class="list">
       <div class="list-item">
         <p>Пополнение: $100</p>
         <p>Криптовалюта: BTC</p>
         <p>Дата: 2024-11-30</p>
       </div>
-      <!-- Другие транзакции -->
+      <!-- Можно добавить другие транзакции -->
     </div>
   </section>
 </main>
 
-<footer>
-  <p>© 2024 LotterySite</p>
-  <div class="links">
-    <a href="winners.html">Победители</a> |
-    <a href="faq.html">FAQ</a> |
+<footer class="footer">
+  <p class="footer__copy">© 2024 LottoVerse</p>
+  <div class="footer__links">
+    <a href="winners.html">Победители</a> | 
+    <a href="faq.html">FAQ</a> | 
     <a href="support.html">Поддержка</a>
   </div>
 </footer>

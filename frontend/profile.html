@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Профиль - LotterySite</title>
-  <link rel="stylesheet" href="./css/style.css">
+  <title>Профиль - LottoVerse</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header>
-  <div class="logo" onclick="window.location='index.html';">LotterySite</div>
-  <nav>
-    <ul>
+<header class="header">
+  <div class="logo" onclick="window.location='index.html';">LottoVerse</div>
+  <nav class="nav">
+    <button class="nav-toggle" aria-label="Открыть меню">
+      <span class="nav-toggle__line"></span>
+      <span class="nav-toggle__line"></span>
+      <span class="nav-toggle__line"></span>
+    </button>
+    <ul class="nav-list">
       <li><a href="lotteries.html">Лотереи</a></li>
       <li><a href="profile.html" class="active">Профиль</a></li>
       <li><a href="balance.html">Баланс</a></li>
       <li><a href="settings.html">Настройки</a></li>
       <li><a href="winners.html">Победители</a></li>
-      <li><a href="#">FAQ</a></li>
-      <li><a href="#">Поддержка</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="support.html">Поддержка</a></li>
     </ul>
   </nav>
   <div class="auth-btn">
@@ -26,7 +31,7 @@
 </header>
 
 <main>
-  <section class="profile-section">
+  <section class="container profile-section">
     <h2 class="section-title">Мой Профиль</h2>
     <div class="profile-header">
       <div class="profile-avatar"></div>
@@ -36,18 +41,16 @@
         <p>Описание: Люблю выигрывать!</p>
       </div>
     </div>
-    <!-- Остальное содержимое профиля -->
   </section>
 </main>
 
-<footer>
-  <p>© 2024 LotterySite</p>
-  <div class="links">
-    <a href="winners.html">Победители</a> |
-    <a href="#">FAQ</a> |
-    <a href="#">Поддержка</a>
+<footer class="footer">
+  <p class="footer__copy">© 2024 LottoVerse</p>
+  <div class="footer__links">
+    <a href="winners.html">Победители</a> | 
+    <a href="faq.html">FAQ</a> | 
+    <a href="support.html">Поддержка</a>
   </div>
 </footer>
-<script src="./js/main.js"></script>
 </body>
 </html>
