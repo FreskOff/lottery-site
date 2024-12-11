@@ -46,14 +46,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // Логика для бургер-меню
-  const burger = document.querySelector('.burger');
-  const navUl = document.querySelector('nav ul');
-  if (burger && navUl) {
-    burger.addEventListener('click', () => {
-      navUl.classList.toggle('show');
-    });
-  }
+// Логика для бургер-меню (исправленная)
+const navToggle = document.querySelector('.nav-toggle');
+const navList = document.querySelector('.nav-list');
+
+if (navToggle && navList) {
+  navToggle.addEventListener('click', () => {
+    navList.classList.toggle('show');
+  });
+}
+
 
   // Загружаем лотереи
   showLoader();
@@ -87,4 +89,3 @@ document.addEventListener('buyLottoTicket', async (e) => {
     hideLoader();
   }
 });
-

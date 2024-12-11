@@ -7,6 +7,7 @@
   --color-secondary: #FFB800;
   --color-text: #FFFFFF;
   --color-text-mid: #DDDDDD;
+  --color-text-light: #FFFFFFCC;
   --font-family: 'Inter', sans-serif;
   --font-size-base: 16px;
   --font-weight-regular: 400;
@@ -170,6 +171,7 @@ p {
 .nav-list {
   display: flex;
   gap: var(--spacing-md);
+  transition: all var(--transition-base);
 }
 
 .nav-list a {
@@ -181,7 +183,7 @@ p {
   color: var(--color-primary);
 }
 
-/* Hero */
+/* Hero (для главной) */
 .hero {
   position: relative;
   padding: var(--spacing-xl) var(--spacing-md);
@@ -243,7 +245,7 @@ p {
   pointer-events: none;
 }
 
-/* Стили билетов - фигур */
+/* Анимация плавающих фигур */
 .ticket-shape {
   width: 60px;
   height: 40px;
@@ -283,7 +285,7 @@ p {
   100% { transform: translateY(-20px) rotate(-5deg); }
 }
 
-/* About, Lottery-showcase, Join */
+/* Общие секции */
 .about, .lottery-showcase, .join {
   padding: var(--spacing-xl) 0;
   text-align: center;
@@ -348,7 +350,211 @@ p {
   font-size: 0.9rem;
 }
 
-/* Адаптивность */
+
+/* ============================= */
+/* ИНДИВИДУАЛЬНЫЙ ДИЗАЙН СТРАНИЦ */
+/* ============================= */
+
+/* Лотереи (lotteries.html) 
+   - Добавим летающие "билеты" и градиенты */
+body.page-lotteries {
+  position: relative;
+}
+body.page-lotteries::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(var(--color-secondary), transparent 70%);
+  opacity: 0.2;
+  border-radius: 50%;
+  animation: floatLottery 5s infinite alternate ease-in-out;
+}
+
+@keyframes floatLottery {
+  0% {transform: translateY(0) rotate(0);}
+  100% {transform: translateY(-20px) rotate(10deg);}
+}
+
+/* Профиль (profile.html)
+   - Светящаяся аватарка или круги */
+body.page-profile {
+  position: relative;
+}
+body.page-profile::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(var(--color-primary), transparent 70%);
+  opacity: 0.3;
+  filter: blur(50px);
+  animation: profileGlow 5s infinite alternate ease-in-out;
+}
+
+@keyframes profileGlow {
+  0% {transform: scale(1);}
+  100% {transform: scale(1.2);}
+}
+
+/* Баланс (balance.html)
+   - Летающие "монетки" - кружки разного размера */
+body.page-balance {
+  position: relative;
+}
+body.page-balance::after {
+  content: '';
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  width: 80px; height: 80px;
+  background: var(--color-secondary);
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: coinFly 4s infinite alternate ease-in-out;
+}
+
+@keyframes coinFly {
+  0% {transform: translate(-50%,0);}
+  100% {transform: translate(-50%,-30px);}
+}
+
+/* Настройки (settings.html)
+   - Плавающие "шестеренки" (можно использовать псевдоэлементы) */
+body.page-settings {
+  position: relative;
+}
+body.page-settings::before {
+  content: '⚙';
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  font-size: 4rem;
+  color: var(--color-primary);
+  opacity: 0.1;
+  animation: gearRotate 10s linear infinite;
+}
+
+@keyframes gearRotate {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+
+/* Победители (winners.html)
+   - Добавим светящуюся "корону" или просто золотое сияние */
+body.page-winners {
+  position: relative;
+}
+body.page-winners::before {
+  content: '👑';
+  position: absolute;
+  top: 10%;
+  right: 15%;
+  font-size: 3rem;
+  color: var(--color-secondary);
+  opacity: 0.1;
+  animation: winnerPulse 3s infinite alternate ease-in-out;
+}
+
+@keyframes winnerPulse {
+  0% {transform: scale(1);}
+  100% {transform: scale(1.2);}
+}
+
+/* FAQ (faq.html)
+   Уже было сделано - светящийся градиент + летающий элемент */
+body.page-faq {
+  position: relative;
+}
+body.page-faq::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(var(--color-primary), transparent 70%);
+  opacity: 0.3;
+  filter: blur(50px);
+  animation: faqGlow 5s infinite alternate ease-in-out;
+}
+@keyframes faqGlow {
+  0% {transform: scale(1);}
+  100% {transform: scale(1.2);}
+}
+
+/* Поддержка (support.html)
+   Летающий элемент и подсветка формы */
+body.page-support {
+  position: relative;
+}
+body.page-support::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: -50px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(var(--color-primary), transparent 60%);
+  opacity: 0.2;
+  filter: blur(40px);
+  animation: supportGlow 5s infinite alternate ease-in-out;
+}
+
+@keyframes supportGlow {
+  0% { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.2) translateY(-20px); }
+}
+
+/* Индивидуальные блоки для FAQ */
+.faq-item {
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-sm);
+  background: var(--color-bg-accent);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 4px;
+}
+.faq-item h3 {
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Форма поддержки */
+.support-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--color-bg-accent);
+  border-radius: 4px;
+  padding: var(--spacing-md);
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  position: relative;
+}
+.support-form h3 {
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-primary);
+}
+.support-form textarea {
+  width: 100%;
+  height: 150px;
+  background: #1E1E3C;
+  border: 1px solid #2C2C4F;
+  border-radius: 4px;
+  color: var(--color-text);
+  padding: var(--spacing-sm);
+  font-family: var(--font-family);
+  resize: none;
+  transition: border var(--transition-base);
+}
+.support-form textarea:focus {
+  outline: none;
+  border: 1px solid var(--color-primary);
+}
+
+/* Мобильная адаптация */
 @media (max-width: 600px) {
   .nav-list {
     display: none;
@@ -359,16 +565,23 @@ p {
     flex-direction: column;
     border-radius: 4px;
     padding: var(--spacing-md);
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all var(--transition-base);
+  }
+
+  .nav-list.show {
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .nav-toggle {
     display: flex;
     flex-direction: column;
     gap: 5px;
-  }
-
-  .nav-list.show {
-    display: flex;
   }
 
   .hero {
@@ -387,5 +600,19 @@ p {
   .footer__links {
     flex-direction: column;
   }
+
+  /* Дополнительные стили для мобильных версий страниц */
+  body.page-faq,
+  body.page-support,
+  body.page-lotteries,
+  body.page-profile,
+  body.page-balance,
+  body.page-settings,
+  body.page-winners {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+
+  .support-form {
+    padding: var(--spacing-sm);
+  }
 }
-  
